@@ -28,7 +28,7 @@ admission_config.yaml  apiserver-client-cert.pem  apiserver-client-key.pem  exte
       	path: /etc/kubernetes/epconfig
 ```
 
-## 3、Create the corresponding json or yaml file（in this case it is admission_config.yaml）
+## 3、edit the admission_config.yaml 
 ```yaml
 apiVersion: apiserver.config.k8s.io/v1
 kind: AdmissionConfiguration
@@ -36,11 +36,11 @@ plugins:
 - name: ImagePolicyWebhook
   configuration:
     imagePolicy:
-    	kubeConfigFile: /etc/kubernetes/epconfig/kubeconf
+    	kubeConfigFile: /etc/kubernetes/epconfig/kubeconf #update the directory
       allowTTL: 50
       denyTTL: 50
       retryBackoff: 500
-      defaultAllow: flase 
+      defaultAllow: flase #update to false
 ```
 
 ## 4 update kubeconf file
