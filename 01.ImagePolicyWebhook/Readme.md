@@ -15,20 +15,20 @@ admission_config.yaml  apiserver-client-cert.pem  apiserver-client-key.pem  exte
 - --enable-admission-plugins=NodeRestriction,ImagePolicyWebhook
 - --admission-control-config-file=/etc/kubernetes/epconfig/admission_config.yaml
 ```
-## 2、mount
+## 2、create volume and volume mount
 ```yaml
-# mount
+# volume mount
     volumeMounts:
     - mountPath: /etc/kubernetes/epconfig
       name: epconfig
-# 映射 volumes      
+# volumes      
   volumes:
     - name: epconfig
     	hostPath:
       	path: /etc/kubernetes/epconfig
 ```
 
-## 3、创建相对应的json或者yaml文件（admission_config.yaml）
+## 3、Create the corresponding json or yaml file（in this case it is admission_config.yaml）
 ```yaml
 apiVersion: apiserver.config.k8s.io/v1
 kind: AdmissionConfiguration
@@ -40,10 +40,10 @@ plugins:
       allowTTL: 50
       denyTTL: 50
       retryBackoff: 500
-      defaultAllow: flase # 重点
+      defaultAllow: flase 
 ```
 
-## 4、修改kubeconf
+## 4 update kubeconf file
 ```yaml
 apiVersion: v1
 kind: Config
@@ -70,7 +70,7 @@ users:
     client-key:  /etc/kubernetes/epconfig/apiserver-client-key.pem # key matching the cert
 ```
 
-## 5、重启
+## 5、restart kubelet
 ```shell
 systemctl daemon-reload
 
