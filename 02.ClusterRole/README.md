@@ -1,15 +1,14 @@
 # Clusterrole
 
-修改namespace下role的权限只允许对某一类对象做list list的操作
-新建一个serviceaccount (sa02)
-创建名为role02的role，并且通过rolebinding绑定role02，只允许对persistentvolumeclaims做update操作。
+
+*Create a new serviceaccount (sa02)
+
+*Create a role named role02, and bind role02 through rolebinding, and only allow update operations on persistentvolumeclaims.
 
 ```shell
-1. 修改对应的role使用list权限
+1. kubectl create sa sa01
 
-2. kubectl create sa sa01
+2. kubectl create role role02 --verb=update --resource=persistentvolumeclaims
 
-3. kubectl create role role02 --verb=update
-
-4. kubectl create rolebinding xxx-rolebinding --role role02 --serviceaccount namespace:sa02
+3. kubectl create rolebinding xxx-rolebinding --role role02 --serviceaccount namespace:sa02
 ```
