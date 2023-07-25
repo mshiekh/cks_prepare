@@ -4,7 +4,6 @@
 
 ## official documentation：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
 
-
 ## <font color=red>master node configurations</font>
 ## 0、epconfig directory
 ```shell
