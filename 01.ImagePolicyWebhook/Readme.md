@@ -2,19 +2,19 @@
 
 ![1](../images/1.png)
 
-## 官方文档：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
+## official documentation：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
 
 
-## <font color=red>在master节点操作</font>
-## 0、epconfig目录文件
+## <font color=red>master node configurations</font>
+## 0、epconfig directory
 ```shell
 admission_config.yaml  apiserver-client-cert.pem  apiserver-client-key.pem  external-cert.pem  external-key.pem  kubeconf
 ```
 
-## 1、修改 apiserver.yaml
+## 1、update apiserver.yaml
 ```yaml
 - --enable-admission-plugins=NodeRestriction,ImagePolicyWebhook
-- --admission-control-config-file=/etc/kubernetes/epconfig/admission_configuration.yaml
+- --admission-control-config-file=/etc/kubernetes/epconfig/admission_config.yaml
 ```
 ## 2、mount
 ```yaml
